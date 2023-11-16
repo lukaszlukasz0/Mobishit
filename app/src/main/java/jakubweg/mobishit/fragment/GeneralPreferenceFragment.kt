@@ -119,11 +119,20 @@ class GeneralPreferenceFragment : PreferenceFragmentCompat() {
         }
 
 
+        findPreference("change_diner_link")?.setOnPreferenceChangeListener { _, value  ->
+            if (value is String) {
+                prefs.setDinerLink(value);
+                // UpdateWorker.requestUpdates(context
+                //        ?: return@setOnPreferenceChangeListener true)
+            }
+            true
+        }
+
         findPreference("refreshFrequency")?.setOnPreferenceChangeListener { _, value ->
             if (value is String) {
                 prefs.setRefreshFrequency(value.toInt())
                 UpdateWorker.requestUpdates(context
-                        ?: return@setOnPreferenceChangeListener true)
+                    ?: return@setOnPreferenceChangeListener true)
             }
             true
         }

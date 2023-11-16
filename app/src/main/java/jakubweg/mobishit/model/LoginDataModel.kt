@@ -113,8 +113,8 @@ class LoginDataModel(application: Application)
         UpdateHelper.makeConnection(
                 inputToWrite = buildString {
                     append("login=eparent")
-                    append("&pass=eparent")
-                    append("&device_id="); append(deviceId)
+                        append("&pass=eparent")
+                        append("&device_id="); append(deviceId)
                     append("&app_version=60")
                     append("&parent_login="); append(loginName)
                     append("&parent_pass="); append(password)

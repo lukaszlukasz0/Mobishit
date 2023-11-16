@@ -34,7 +34,8 @@ class AfterLoginFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         MobiregPreferences.get(activity ?: return).apply {
-            allowedInstantNotifications = view?.findViewById<CheckBox>(R.id.useFcmCheckbox)?.isChecked ?: return@apply
+            //allowedInstantNotifications = view?.findViewById<CheckBox>(R.id.useFcmCheckbox)?.isChecked ?: return@apply
+            allowedInstantNotifications = false;
         }
     }
 
@@ -56,6 +57,7 @@ class AfterLoginFragment : Fragment() {
                     .setNegativeButton("Ok, trudno") { d, _ -> d.dismiss() }
                     .show()
         }
+
 
         val welcomeText = view.findViewById<AppCompatTextView>(R.id.welcomeText)!!
 
@@ -88,42 +90,44 @@ class AfterLoginFragment : Fragment() {
             }
         }
 
-        view.findViewById<CheckBox>(R.id.useFcmCheckbox)?.setOnCheckedChangeListener { checkBox, isChecked ->
-            if (!isChecked) {
-                val ending = when (prefs.sex) {
-                    "M" -> "y"
-                    "K" -> "a"
-                    else -> "a/y"
-                }
 
-                val context = context ?: return@setOnCheckedChangeListener
+//        view.findViewById<CheckBox>(R.id.useFcmCheckbox)?.setOnCheckedChangeListener { checkBox, isChecked ->
+//            if (!isChecked) {
+//                val ending = when (prefs.sex) {
+//                    "M" -> "y"
+//                    "K" -> "a"
+//                    else -> "a/y"
+//                }
+//
+//                val context = context ?: return@setOnCheckedChangeListener
+//
+//                AlertDialog.Builder(context)
+//                        .setIcon(AppCompatResources.getDrawable(context, R.drawable.ic_notifications_off_black))
+//                        .setCancelable(false)
+//                        .setTitle("Czy na pewno?")
+//                        .setMessage("Gdy wyłączysz tę funkcję, zostaniesz powiadomion$ending tylko raz na kilka godzin.\n" +
+//                                "Czy jesteś pewn$ending takiej decyzji?")
+//                        .setPositiveButton("Nie, chcę powiadomienia!") { d, _ ->
+//                            d.dismiss()
+//                            checkBox?.isChecked = true
+//                        }
+//                        .setNegativeButton("Tak, jestem pewn$ending", null)
+//                        .show()
+//
+//            }
+//        }
 
-                AlertDialog.Builder(context)
-                        .setIcon(AppCompatResources.getDrawable(context, R.drawable.ic_notifications_off_black))
-                        .setCancelable(false)
-                        .setTitle("Czy na pewno?")
-                        .setMessage("Gdy wyłączysz tę funkcję, zostaniesz powiadomion$ending tylko raz na kilka godzin.\n" +
-                                "Czy jesteś pewn$ending takiej decyzji?")
-                        .setPositiveButton("Nie, chcę powiadomienia!") { d, _ ->
-                            d.dismiss()
-                            checkBox?.isChecked = true
-                        }
-                        .setNegativeButton("Tak, jestem pewn$ending", null)
-                        .show()
 
-            }
-        }
-
-        view.findViewById<View>(R.id.serverInfoBtn)?.setOnClickListener {
-            AlertDialog.Builder(context ?: return@setOnClickListener)
-                    .setTitle("Po co serwer?")
-                    .setMessage("""API Mobirega nie pozwala na natychmiastowe powiadomienia, ale możemy sprawdzać np. co 5 minut czy coś nie zmieniło.
-                        |Sprawdzanie tak często rozładowałoby twoją baterię w bardzo krótkim czasie, dlatego stworzyliśmy specjalny serwer, który sprawdza co chwilę za ciebie.
-                        |Gdy coś się zmieni to powiadamia twój telefon, aby on mógł powiadomić Ciebie.
-                        |Twoje dane są przesyłane tylko szyfrowanym połączeniem do bezpiecznego źródła gdzie służą tylko synchronizacji.
-                    """.trimMargin())
-                    .setPositiveButton("Rozumiem") { d, _ -> d.dismiss() }
-                    .show()
-        }
+//        view.findViewById<View>(R.id.serverInfoBtn)?.setOnClickListener {
+//            AlertDialog.Builder(context ?: return@setOnClickListener)
+//                    .setTitle("Po co serwer?")
+//                    .setMessage("""API Mobirega nie pozwala na natychmiastowe powiadomienia, ale możemy sprawdzać np. co 5 minut czy coś nie zmieniło.
+//                        |Sprawdzanie tak często rozładowałoby twoją baterię w bardzo krótkim czasie, dlatego stworzyliśmy specjalny serwer, który sprawdza co chwilę za ciebie.
+//                        |Gdy coś się zmieni to powiadamia twój telefon, aby on mógł powiadomić Ciebie.
+//                        |Twoje dane są przesyłane tylko szyfrowanym połączeniem do bezpiecznego źródła gdzie służą tylko synchronizacji.
+//                    """.trimMargin())
+//                    .setPositiveButton("Rozumiem") { d, _ -> d.dismiss() }
+//                    .show()
+//        }
     }
 }

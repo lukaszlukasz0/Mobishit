@@ -32,7 +32,7 @@ class TimetableWidgetProvider : AppWidgetProvider() {
             var millis = DateHelper.getNowDateMillis()
 
             val hour = cal[Calendar.HOUR_OF_DAY]
-            if (hour >= 16) {
+            if (hour >= 17) {
                 millis += MILLIS_IN_DAY
             }
 

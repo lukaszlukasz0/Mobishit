@@ -105,16 +105,29 @@ class MainActivity : DoublePanelActivity() {
         super.onSaveInstanceState(outState)
         outState?.putInt("currentSelectedItemId", currentSelectedItemId)
     }
-
+    private fun openUrl(url: String?) {
+        if (url != null) {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(browserIntent)
+        }
+    }
     fun onNavigationItemSelected(itemId: Int, requestNewLayout: Boolean) {
         when (itemId) {
             R.id.nav_force_refresh -> {
                 tryToRefresh()
             }
+            R.id.nav_diner_site -> {
+                openUrl(preferences.dinerLink)
+            }
+            R.id.nav_homework_site -> {
+                openUrl("https://mobireg.pl/${preferences.host}/")
+            }
 
             R.id.nav_app_update ->
                 startActivity(Intent(Intent.ACTION_VIEW,
                         Uri.parse(preferences.getAppUpdateLink() ?: return)))
+
+
             else -> {
                 currentSelectedItemId = itemId
                 if (requestNewLayout)
@@ -128,6 +141,8 @@ class MainActivity : DoublePanelActivity() {
             R.id.nav_marks -> SubjectListFragment.newInstance()
             R.id.nav_timetable -> TimetableFragment.newInstance()
             R.id.nav_tests -> TestsFragment.newInstance()
+
+            //R.id.nav_homework -> HomeworkFragment.newInstance()
             R.id.nav_attendances -> AttendancesSummaryFragment.newInstance()
             R.id.nav_comparisons -> ComparisonsFragment.newInstance()
             R.id.nav_messages -> MessagesListFragment.newInstance()

@@ -134,7 +134,7 @@ class TimetableFragment : Fragment() {
     fun onChooseDateClicked() {
         val (year, month, dayOfMonth) = Calendar.getInstance().run {
             timeInMillis = (viewPager?.adapter as? DayViewPagerAdapter?)
-                    ?.getTime(viewPager?.currentItem ?: return) ?: 0L
+                ?.getTime(viewPager?.currentItem ?: return) ?: 0L
 
             return@run Triple(get(Calendar.YEAR), get(Calendar.MONTH), get(Calendar.DAY_OF_MONTH))
         }

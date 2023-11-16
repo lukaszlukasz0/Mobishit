@@ -85,7 +85,9 @@ class MessageDetailsFragment : Fragment() {
 
                 textView(R.id.textContent)!!.also {
                     it.movementMethod = LinkMovementMethod.getInstance()
-                    it.text = msg.content
+
+                    it.text = msg.content.replace("&nbsp;"," ");
+
                 }
 
                 findViewById<FloatingActionButton?>(R.id.btnReply)?.setOnClickListener {

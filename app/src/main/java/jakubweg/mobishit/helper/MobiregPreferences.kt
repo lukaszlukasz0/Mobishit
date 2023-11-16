@@ -97,6 +97,7 @@ class MobiregPreferences private constructor(
             putString("host", host)
             putBoolean("hasHostInLogin", hasHostInLogin)
             putString("pass", password)
+            putString("DinerLink", "https://www.gov.pl/web/zpsmkoszalin/tygodniowy-jadlospis")
         }.apply()
     }
 
@@ -106,6 +107,9 @@ class MobiregPreferences private constructor(
 
     fun setRefreshFrequency(newFrequency: Int) {
         prefs.edit().putString("refreshFrequency", "$newFrequency").apply()
+    }
+    fun setDinerLink(newLink: String?) {
+        prefs.edit().putString("DinerLink", "$newLink" ).apply()
     }
 
     fun setPassword(notEncryptedNewPassword: String?) {
@@ -175,6 +179,7 @@ class MobiregPreferences private constructor(
                     .remove("lastTestRefresh")
                     .remove("readyAverage")
                     .remove("lmsg")
+                    .remove("DinerLink")
                     .commit()
 
             AppDatabase.deleteDatabase(appContext)
@@ -210,13 +215,15 @@ class MobiregPreferences private constructor(
 
     val deviceId get() = getDeviceIdOrRandomize()
 
-    val startDate get() = getString("startDate") ?: "2018-01-01"
+    val startDate get() = getString("startDate") ?: "2022-09-01"
 
     val getAllMarkGroups get() = prefs.getBoolean("getAllMarkGroups", true)
 
     val studentId get() = prefs.getInt("userId", -1)
 
     val sex get() = getString("sex") ?: ""
+
+    val dinerLink get() = prefs.getString("DinerLink", "https://www.gov.pl/web/zpsmkoszalin/tygodniowy-jadlospis")
 
     val lastCheckTime get() = prefs.getLong("lastCheck", 0L)
 

@@ -11,6 +11,9 @@ import java.net.URL
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import android.util.Log
+import java.time.Year
+import java.time.YearMonth
 
 
 class ChangedObjectsLog {
@@ -78,6 +81,7 @@ class UpdateHelper(private val context: Context) {
 
         val year = Calendar.getInstance().get(Calendar.YEAR) + 2
         val endDate = "${year}-06-30"
+
 
         //ignore everything
         onNewMark = doNothingCallback()
@@ -322,7 +326,7 @@ class UpdateHelper(private val context: Context) {
                 writer.flush()
                 writer.close()
                 os.close()
-
+                Log.d("IS:", inputToWrite.toString())
                 InputStreamReader(BufferedInputStream(connection.inputStream), Charsets.UTF_8)
             }
         }
