@@ -9,7 +9,7 @@ Mój fork aplikacji został zmieniony w porównaniu do Jakuba:
  - Dodanie linku do Jadłospisu
 
 
-### <a href="https://github.com/lukaszlukasz0/Mobishit/releases/download/public/mobishit.v2.0.1.apk"><b>Pobierz aplikację Łukasza</b></a> | 
+### <a href="https://github.com/lukaszlukasz0/Mobishit/releases/download/public/mobishit.v2.0.2.apk"><b>Pobierz aplikację Łukasza</b></a> | 
 
 ![Zrzuty ekranu](./mobishit201.jpeg?raw=true) 
 
