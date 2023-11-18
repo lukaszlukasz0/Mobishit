@@ -131,7 +131,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <TextView
                 android:id="@+id/textContent"
@@ -144,8 +144,9 @@
                 android:autoLink="web|email|phone"
                 android:linksClickable="true"
                 android:paddingBottom="32dp"
-                android:text="hafksnfjsa nfk\n\n\nasn fkjsan fkjn sfakjnsfkaj"
-                tools:ignore="RtlHardcoded" />
+                android:text="Lorem ipsum dolor \nsit amet, consectetur adipiscing elit.\n\n Morbi posuere diam sit amet rhoncus venenatis."
+                tools:ignore="RtlHardcoded"
+                android:textIsSelectable = "true" />
         </ScrollView>
     </LinearLayout>
 
@@ -157,8 +158,10 @@
         android:layout_gravity="bottom|right"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="12dp"
+        android:contentDescription="Odpowiedź"
         app:srcCompat="@drawable/ic_reply"
-        app:fabCustomSize="48dp"
+        app:fabCustomSize="1dp"
         app:fabSize="normal"
         tools:ignore="RtlHardcoded" />
+    <!--48dp-->
 </FrameLayout>

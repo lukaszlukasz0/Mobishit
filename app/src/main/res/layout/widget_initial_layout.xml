@@ -43,7 +43,8 @@
         android:layout_height="match_parent"
         android:layout_margin="15dp"
         android:text="Ten widget nie załadował się tak jak powinien\nMożesz go usunąć i dodać jeszcze raz"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        />
 
     <TextView
         android:id="@+id/empty_view"

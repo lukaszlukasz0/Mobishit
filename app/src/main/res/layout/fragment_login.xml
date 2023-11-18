@@ -20,36 +20,47 @@
             android:text="Zaloguj się na swoje konto mobireg"
             android:textSize="17sp"
             tools:ignore="UnusedAttribute" />
-
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColorHint="#B9B8B8"
+            android:hint="Twój pełny login">
         <EditText
             android:id="@+id/editLogin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="login"
-            android:hint="Twój pełny login"
+            android:layout_height="70dp"
+            android:autofillHints="username"
             android:importantForAutofill="yes"
             android:inputType="textNoSuggestions"
             android:textSize="17sp"
             tools:ignore="UnusedAttribute" />
-
+    </android.support.design.widget.TextInputLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Login musi zawierać host po kropce np. jakub.zsl-krakow"
-            android:textSize="12sp" />
+            android:text="Login musi zawierać host szkoły po kropce \nnp. jakub.zsl-krakow, ewa.zpsm-kos"
+            android:textSize="15sp"
+            />
 
-        <EditText
-            android:id="@+id/editPass"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="password"
+            android:layout_height="match_parent"
+            android:textColorHint="#B9B8B8"
             android:hint="Hasło"
-            android:importantForAutofill="yes"
-            android:inputType="textPassword"
-            android:textSize="17sp"
-            tools:ignore="UnusedAttribute" />
+            app:passwordToggleEnabled="true">
 
+            <EditText
+                android:id="@+id/editPass"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:autofillHints="password"
+                android:importantForAutofill="yes"
+                android:inputType="textPassword"
+                android:textSize="17sp"
+                app:passwordToggleEnabled="true"
+                tools:ignore="UnusedAttribute,SpeakableTextPresentCheck" />
+        </android.support.design.widget.TextInputLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
