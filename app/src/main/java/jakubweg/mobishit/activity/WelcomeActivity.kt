@@ -7,7 +7,7 @@ import jakubweg.mobishit.R
 import jakubweg.mobishit.fragment.LoginFragment
 import jakubweg.mobishit.fragment.WelcomeFirstFragment
 import jakubweg.mobishit.helper.MobiregPreferences
-import jakubweg.mobishit.service.FcmServerNotifierWorker
+// import jakubweg.mobishit.service.FcmServerNotifierWorker
 
 class WelcomeActivity : FragmentActivity() {
 
@@ -35,10 +35,10 @@ class WelcomeActivity : FragmentActivity() {
                 .commitAllowingStateLoss()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        if (MobiregPreferences.get(this).run { isSignedIn && allowedInstantNotifications }
-                && intent?.getBooleanExtra("isPreview", false) == false)
-            FcmServerNotifierWorker.requestPeriodicServerNotifications()
-    }
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        if (MobiregPreferences.get(this).run { isSignedIn && allowedInstantNotifications }
+//                && intent?.getBooleanExtra("isPreview", false) == false)
+//           //FcmServerNotifierWorker.requestPeriodicServerNotifications()
+//    }
 }

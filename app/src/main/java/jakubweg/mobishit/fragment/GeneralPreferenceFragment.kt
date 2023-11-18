@@ -27,7 +27,7 @@ import jakubweg.mobishit.helper.SimpleCallback2
 import jakubweg.mobishit.helper.TimetableWidgetProvider
 import jakubweg.mobishit.helper.makeCallback2
 import jakubweg.mobishit.service.CountdownService
-import jakubweg.mobishit.service.FcmServerNotifierWorker
+//import jakubweg.mobishit.service.FcmServerNotifierWorker
 import jakubweg.mobishit.service.UpdateWorker
 import java.lang.ref.WeakReference
 
@@ -52,7 +52,7 @@ class GeneralPreferenceFragment : PreferenceFragmentCompat() {
                         dialog.dismiss()
                         MobiregPreferences.get(this).setPassword(editText.text.toString())
                         UpdateWorker.requestUpdates(this)
-                        FcmServerNotifierWorker.requestPeriodicServerNotifications()
+                        //FcmServerNotifierWorker.requestPeriodicServerNotifications()
                     }
                     .create().show()
         }
@@ -108,12 +108,12 @@ class GeneralPreferenceFragment : PreferenceFragmentCompat() {
                         .setNegativeButton("Tak, jestem pewn$ending") { _, _ ->
                             (preference as SwitchPreferenceCompat?)?.isChecked = false
                             prefs.allowedInstantNotifications = true
-                            FcmServerNotifierWorker.requestPeriodicServerNotifications()
+                            //FcmServerNotifierWorker.requestPeriodicServerNotifications()
                         }
                         .show()
                 false
             } else {
-                FcmServerNotifierWorker.requestPeriodicServerNotifications()
+               // FcmServerNotifierWorker.requestPeriodicServerNotifications()
                 true
             }
         }

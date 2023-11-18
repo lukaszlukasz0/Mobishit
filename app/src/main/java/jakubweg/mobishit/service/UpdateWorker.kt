@@ -133,7 +133,7 @@ class UpdateWorker(context: Context, workerParameters: WorkerParameters)
                 try {
                     if (prefs.lastTokenUploadMillis + TOKEN_UPLOAD_TIMEOUT < System.currentTimeMillis()) {
                         Thread.sleep(1000L) //wait, maybe running, we don't want fcm uploader to be cancelled
-                        FcmServerNotifierWorker.requestPeriodicServerNotifications()
+                        //FcmServerNotifierWorker.requestPeriodicServerNotifications()
                     }
                 } catch (e: Exception) {
                     // ignore

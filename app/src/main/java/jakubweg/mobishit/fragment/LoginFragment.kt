@@ -21,7 +21,7 @@ import jakubweg.mobishit.activity.WelcomeActivity
 import jakubweg.mobishit.helper.MobiregPreferences
 import jakubweg.mobishit.model.LoginDataModel
 import jakubweg.mobishit.service.AppUpdateWorker
-import jakubweg.mobishit.service.FcmServerNotifierWorker
+//import jakubweg.mobishit.service.FcmServerNotifierWorker
 import jakubweg.mobishit.service.UpdateWorker
 
 class LoginFragment : Fragment() {
@@ -92,7 +92,7 @@ class LoginFragment : Fragment() {
                             it.seenWelcomeActivity = true
                         }
                         AppUpdateWorker.requestChecks()
-                        FcmServerNotifierWorker.requestPeriodicServerNotifications()
+                        //FcmServerNotifierWorker.requestPeriodicServerNotifications()
                         applyFragment(AfterLoginFragment.newInstance())
                     }
                 }

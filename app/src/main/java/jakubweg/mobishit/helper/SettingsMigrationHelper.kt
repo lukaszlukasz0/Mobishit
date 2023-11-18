@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import jakubweg.mobishit.db.AppDatabase
 import jakubweg.mobishit.service.AppUpdateWorker
-import jakubweg.mobishit.service.FcmServerNotifierWorker
+//import jakubweg.mobishit.service.FcmServerNotifierWorker
 import jakubweg.mobishit.service.UpdateWorker
 
 @Suppress("NOTHING_TO_INLINE")
@@ -50,6 +50,6 @@ object SettingsMigrationHelper {
 
         UpdateWorker.requestUpdates(context)
         AppUpdateWorker.requestChecks()
-        FcmServerNotifierWorker.requestPeriodicServerNotifications()
+        //FcmServerNotifierWorker.requestPeriodicServerNotifications()
     }
 }

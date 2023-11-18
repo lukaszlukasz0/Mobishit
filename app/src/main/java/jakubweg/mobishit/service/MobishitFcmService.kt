@@ -14,8 +14,8 @@ import jakubweg.mobishit.helper.DedicatedServerManager
 import jakubweg.mobishit.helper.MobiregPreferences
 import jakubweg.mobishit.helper.NotificationHelper
 import java.net.URLEncoder
-
-class MobishitFcmService : FirebaseMessagingService() {
+/*
+ class MobishitFcmService : FirebaseMessagingService() {
     override fun onNewToken(token: String?) {
         MobiregPreferences.get(this)
                 .firebaseToken = token
@@ -256,3 +256,4 @@ class MobishitFcmService : FirebaseMessagingService() {
         }
     }
 }
+*/

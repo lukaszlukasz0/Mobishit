@@ -12,7 +12,7 @@ import jakubweg.mobishit.db.AppDatabase
 import jakubweg.mobishit.fragment.AboutVirtualMarksFragment
 import jakubweg.mobishit.helper.ThemeHelper.THEME_DEFAULT
 import jakubweg.mobishit.service.CountdownService
-import jakubweg.mobishit.service.FcmServerNotifierWorker
+//import jakubweg.mobishit.service.FcmServerNotifierWorker
 import java.security.MessageDigest
 import java.util.*
 
@@ -186,7 +186,7 @@ class MobiregPreferences private constructor(
 
             TimetableWidgetProvider.requestInstantUpdate(appContext)
 
-            FcmServerNotifierWorker.requestPeriodicServerNotifications()
+            //FcmServerNotifierWorker.requestPeriodicServerNotifications()
         }
     }
 
@@ -265,7 +265,7 @@ class MobiregPreferences private constructor(
         set(value) {
             decidedAboutFcm = true
             prefs.edit().putBoolean("allowIN", value).apply()
-            FcmServerNotifierWorker.requestPeriodicServerNotifications()
+            //FcmServerNotifierWorker.requestPeriodicServerNotifications()
         }
 
     var decidedAboutFcm
