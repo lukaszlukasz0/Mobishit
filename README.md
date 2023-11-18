@@ -10,6 +10,11 @@ Mój fork aplikacji został zmieniony w porównaniu do Jakuba:
 
 
 ### <a href="https://github.com/lukaszlukasz0/Mobishit/releases/download/public/mobishit.v2.0.1.apk"><b>Pobierz aplikację Łukasza</b></a> | 
+
+![Zrzuty ekranu](./mobishit201.jpeg?raw=true)
+
+
+
 ### <a href="https://github.com/jakweg/Mobishit/releases/download/v1.3.6/mobishit-1.3.6.apk"><b>Pobierz aplikację Jakuba</b></a> | 
 ### [O projekcie](https://jakub.wegrzyn.dev/pl/mobishit/) | 
 ### [Read more](https://jakub.wegrzyn.dev/mobireg-app/) |
