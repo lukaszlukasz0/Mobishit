@@ -11,7 +11,7 @@ Mój fork aplikacji został zmieniony w porównaniu do Jakuba:
 
 ### <a href="https://github.com/lukaszlukasz0/Mobishit/releases/download/public/mobishit.v2.0.1.apk"><b>Pobierz aplikację Łukasza</b></a> | 
 
-![Zrzuty ekranu](./mobishit201.jpeg?raw=true)
+![Zrzuty ekranu](./mobishit201.jpeg?raw=true) 
 
 
 
