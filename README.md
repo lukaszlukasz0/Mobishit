@@ -9,13 +9,18 @@ Mój fork aplikacji został zmieniony w porównaniu do Jakuba:
  - Dodanie linku do Jadłospisu
 
 
-### <a href="https://github.com/lukaszlukasz0/Mobishit/releases/download/public/mobishit.v2.0.2.apk"><b>Pobierz aplikację Łukasza</b></a> | 
+### <a href="https://github.com/lukaszlukasz0/Mobishit/releases/download/public/mobishit.v2.0.3.apk"><b>Pobierz aplikację Łukasza</b></a> | 
 
 ![Zrzuty ekranu](./mobishi202.jpeg?raw=true) 
 
+### Zmiany w wersji 2.0.3
 
+- poprawiono wyciek pamięci w ekranie planu lekcji,
+- poprawiono rozjazd daty zakładki z treścią planu lekcji,
+- dodano wyświetlanie formatowanej treści wiadomości,
+- uporządkowano metadane wersji aplikacji.
 
-### <a href="https://github.com/jakweg/Mobishit/releases/download/v1.3.6/mobishit-1.3.6.apk"><b>Pobierz aplikację Jakuba</b></a> | 
+### <a href="https://github.com/jakweg/Mobishit"><b>Oryginalny projekt Jakuba</b></a> | 
 ### [O projekcie](https://jakub.wegrzyn.dev/pl/mobishit/) | 
 ### [Read more](https://jakub.wegrzyn.dev/mobireg-app/) |
 
