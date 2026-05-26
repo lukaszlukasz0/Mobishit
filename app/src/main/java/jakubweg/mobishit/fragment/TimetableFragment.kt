@@ -10,6 +10,7 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
@@ -210,6 +211,13 @@ class TimetableFragment : Fragment() {
                 }
             }
             return OneDayFragment.newInstance(days[index].time)
+        }
+
+        override fun getItemPosition(item: Any): Int {
+            val millis = (item as? OneDayFragment)?.arguments?.getLong("millis", -1L)
+                ?: return PagerAdapter.POSITION_NONE
+            val newIndex = days.indexOfFirst { it.time == millis }
+            return if (newIndex == -1) PagerAdapter.POSITION_NONE else newIndex
         }
 
         override fun getPageTitle(position: Int): CharSequence = days[position].formatted
