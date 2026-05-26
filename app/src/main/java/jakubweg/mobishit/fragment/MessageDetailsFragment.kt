@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.transition.TransitionInflater
 import android.support.v4.app.Fragment
+import android.support.v4.text.HtmlCompat
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,13 @@ import java.lang.ref.WeakReference
 
 class MessageDetailsFragment : Fragment() {
     companion object {
+        private val htmlTagRegex = Regex(
+                "<\\s*/?\\s*(a|b|blockquote|br|div|em|font|h[1-6]|i|li|ol|p|span|strong|u|ul)(\\s|/?>)",
+                RegexOption.IGNORE_CASE)
+        private val encodedHtmlTagRegex = Regex(
+                "&lt;\\s*/?\\s*(a|b|blockquote|br|div|em|font|h[1-6]|i|li|ol|p|span|strong|u|ul)(\\s|/|&gt;)",
+                RegexOption.IGNORE_CASE)
+
         fun newInstance(messageId: Int) = newInstance(messageId, null, null)
 
         fun newInstance(messageId: Int, messageTitle: CharSequence?, transitionName: String?) = MessageDetailsFragment().also {
@@ -29,6 +37,32 @@ class MessageDetailsFragment : Fragment() {
                 putCharSequence("title", messageTitle)
                 putString("transitionName", transitionName)
             }
+        }
+
+        private fun formatMessageContent(content: String): CharSequence {
+            val normalized = content.replace("&nbsp;", " ")
+            var htmlSource = normalized
+            if (encodedHtmlTagRegex.containsMatchIn(htmlSource)) {
+                htmlSource = HtmlCompat
+                        .fromHtml(htmlSource, HtmlCompat.FROM_HTML_MODE_COMPACT)
+                        .toString()
+            }
+
+            return if (htmlTagRegex.containsMatchIn(htmlSource)) {
+                HtmlCompat
+                        .fromHtml(htmlSource, HtmlCompat.FROM_HTML_MODE_COMPACT)
+                        .trimTrailingWhitespace()
+            } else {
+                normalized
+            }
+        }
+
+        private fun CharSequence.trimTrailingWhitespace(): CharSequence {
+            var endIndex = length
+            while (endIndex > 0 && this[endIndex - 1].isWhitespace()) {
+                endIndex--
+            }
+            return subSequence(0, endIndex)
         }
     }
 
@@ -86,7 +120,7 @@ class MessageDetailsFragment : Fragment() {
                 textView(R.id.textContent)!!.also {
                     it.movementMethod = LinkMovementMethod.getInstance()
 
-                    it.text = msg.content.replace("&nbsp;"," ");
+                    it.text = formatMessageContent(msg.content)
 
                 }
 
