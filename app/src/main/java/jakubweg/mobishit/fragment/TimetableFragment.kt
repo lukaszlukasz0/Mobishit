@@ -10,6 +10,7 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +42,7 @@ class TimetableFragment : Fragment() {
     //private lateinit var viewModel: TimetableModel
     private val viewModel get() = ViewModelProviders.of(this)[TimetableModel::class.java]
 
+    private val mainHandler = Handler(Looper.getMainLooper())
     private var viewPager: ViewPager? = null
     private var tabs: TabLayout? = null
     private var scrollSmoothly = true
@@ -49,13 +51,13 @@ class TimetableFragment : Fragment() {
         tabs = view.findViewById(R.id.dayTabs)!!
 
         viewPager?.apply {
-            adapter = DayViewPagerAdapter(this@TimetableFragment, fragmentManager!!)
+            adapter = DayViewPagerAdapter(this@TimetableFragment, childFragmentManager)
             tabs?.apply {
                 setupWithViewPager(viewPager, true)
             }
         }
 
-        viewModel.days.observe(this, Observer {
+        viewModel.days.observe(viewLifecycleOwner, Observer {
             it ?: return@Observer
             viewPager?.apply {
                 (adapter as? DayViewPagerAdapter?)?.apply {
@@ -100,13 +102,17 @@ class TimetableFragment : Fragment() {
     }
 
     private inline fun postOnMainLooper(crossinline function: () -> Unit) {
-        Handler(Looper.getMainLooper()).postDelayed({ function() }, 50L)
+        mainHandler.postDelayed({ function() }, 50L)
     }
 
     override fun onDestroyView() {
+        tabs?.removeOnTabSelectedListener(tabSelectedListener)
+        tabs?.setupWithViewPager(null)
+        viewPager?.clearOnPageChangeListeners()
+        viewPager?.adapter = null
+        mainHandler.removeCallbacksAndMessages(null)
         super.onDestroyView()
         viewPager = null
-        tabs?.removeOnTabSelectedListener(tabSelectedListener)
         tabs = null
     }
 
@@ -149,7 +155,7 @@ class TimetableFragment : Fragment() {
                 viewPager?.setCurrentItem(index, true)
             else {
                 viewModel.requestDate(millis)
-                Handler(Looper.getMainLooper()).postDelayed({
+                mainHandler.postDelayed({
                     val index2 = (viewPager?.adapter as? DayViewPagerAdapter?)?.getIndexOfOrNext(millis)
                     if (index2 != null) {
                         viewPager?.setCurrentItem(index2, true)
@@ -205,6 +211,13 @@ class TimetableFragment : Fragment() {
                 }
             }
             return OneDayFragment.newInstance(days[index].time)
+        }
+
+        override fun getItemPosition(item: Any): Int {
+            val millis = (item as? OneDayFragment)?.arguments?.getLong("millis", -1L)
+                ?: return PagerAdapter.POSITION_NONE
+            val newIndex = days.indexOfFirst { it.time == millis }
+            return if (newIndex == -1) PagerAdapter.POSITION_NONE else newIndex
         }
 
         override fun getPageTitle(position: Int): CharSequence = days[position].formatted
