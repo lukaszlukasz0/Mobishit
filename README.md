@@ -13,6 +13,11 @@ Mój fork aplikacji został zmieniony w porównaniu do Jakuba:
 
 ![Zrzuty ekranu](./mobishi202.jpeg?raw=true) 
 
+### Budowanie projektu
+
+Instrukcje konfiguracji srodowiska dla lokalnego buildu i Cursor Cloud sa w
+pliku [BUILDING.md](./BUILDING.md). Najwazniejsze: ten projekt wymaga
+Gradle 4.10.1, JDK 8 oraz Android SDK platform 28/build-tools 28.0.3.
 
 
 ### <a href="https://github.com/jakweg/Mobishit/releases/download/v1.3.6/mobishit-1.3.6.apk"><b>Pobierz aplikację Jakuba</b></a> | 
