@@ -14,6 +14,11 @@ Mój fork aplikacji został zmieniony w porównaniu do Jakuba:
 ![Zrzuty ekranu](./mobishi202.jpeg?raw=true) 
 
 ### Zmiany w wersji 2.0.3
+### Budowanie projektu
+
+Instrukcje konfiguracji srodowiska dla lokalnego buildu i Cursor Cloud sa w
+pliku [BUILDING.md](./BUILDING.md). Najwazniejsze: ten projekt wymaga
+Gradle 4.10.1, JDK 8 oraz Android SDK platform 28/build-tools 28.0.3.
 
 - poprawiono wyciek pamięci w ekranie planu lekcji,
 - poprawiono rozjazd daty zakładki z treścią planu lekcji,

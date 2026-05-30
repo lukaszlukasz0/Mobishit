@@ -1,0 +1,26 @@
+---
+description: Android build environment for Cursor Cloud agents
+alwaysApply: true
+---
+
+# Android build environment
+
+This project is a legacy Android/Gradle project. Before attempting a Gradle
+build in Cursor Cloud, set up the environment as follows:
+
+Set up this Android project to build with Gradle 4.10.1: install
+Temurin/OpenJDK 8, Android SDK platform 28, build-tools 28.0.3, platform-tools,
+accept Android SDK licenses, and expose JAVA_HOME plus Android SDK path for
+cloud agents.
+
+Important details:
+
+- Use JDK 8 for Gradle builds. The current Gradle/Kotlin/KAPT stack is not
+  compatible with JDK 21.
+- Install Android SDK platform `android-28`, build-tools `28.0.3`, and
+  `platform-tools`.
+- Accept Android SDK licenses before running Gradle.
+- Set `JAVA_HOME` to the JDK 8 location when building.
+- Set `ANDROID_HOME` or create an ignored `local.properties` with
+  `sdk.dir=<android-sdk-path>`.
+- Use `./gradlew :app:assembleDebug --no-daemon` for debug build verification.

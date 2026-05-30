@@ -1,4 +1,5 @@
-apply plugin: 'com.android.application'
+buildscript {
+    ext.kotlin_version = '1.3.21'
 
 apply plugin: 'kotlin-android'
 
@@ -18,52 +19,23 @@ android {
         versionName "2.0.3"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
     }
-    buildTypes {
-        release {
-            shrinkResources true
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-            debuggable false
-            jniDebuggable false
-            renderscriptDebuggable false
-            pseudoLocalesEnabled false
-            zipAlignEnabled true
-        }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.2.0'
     }
-    aaptOptions.cruncherEnabled = false
-    aaptOptions.useNewCruncher = false
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.android.support:support-v4:28.0.0'
-    implementation 'com.android.support:design:28.0.0'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
-    implementation 'com.android.support:preference-v7:28.0.0'
-    implementation "com.android.support:design:28.0.0"
-
-    implementation 'com.google.code.gson:gson:2.8.5'
-
-    implementation 'android.arch.persistence.room:runtime:1.1.1'
-    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
-    kapt 'android.arch.persistence.room:compiler:1.1.1'
-
-    implementation 'android.arch.lifecycle:extensions:1.1.1'
-    annotationProcessor 'android.arch.lifecycle:compiler:1.1.1'
-
-    implementation "android.arch.work:work-runtime:1.0.0"
-
-    implementation 'com.google.firebase:firebase-core:16.0.7'
-    implementation 'com.google.firebase:firebase-messaging:17.4.0'
-    implementation 'org.jsoup:jsoup:1.11.3'
-
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.1'
-
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
 }
